@@ -77,34 +77,53 @@ async def export_slides():
         html_content = INPUT_HTML.read_text(encoding="utf-8")
         await page.set_content(html_content, wait_until="networkidle")
 
-        # Wait for Google Fonts to load
+        # Wait for Google Fonts to load (fixed 3s + font.ready handshake)
         await page.wait_for_timeout(3000)
+        try:
+            await page.evaluate("() => document.fonts.ready")
+        except Exception:
+            pass
 
-        # Hide IG frame chrome (header, dots, actions, caption)
-        # Strip down to just the carousel viewport
-        await page.evaluate("""() => {
+        # Hide IG frame chrome (header, dots, actions, caption) and resize wrapper.
+        # CRITICAL: pass VIEW_W/VIEW_H as a single JS arg + destructure inside.
+        # JS template literals (`${VIEW_W}`) do NOT see Python variables — they
+        # would silently render as `width:undefinedpx` and break the layout.
+        await page.evaluate(
+            """(dims) => {
+            const [w, h] = dims;
+
             document.querySelectorAll('.ig-header,.ig-dots,.ig-actions,.ig-caption')
                 .forEach(el => el.style.display = 'none');
 
             const frame = document.querySelector('.ig-frame');
-            frame.style.cssText = `width:${VIEW_W}px;height:${VIEW_H}px;max-width:none;border-radius:0;box-shadow:none;overflow:hidden;margin:0;`;
+            frame.style.cssText = `width:${w}px;height:${h}px;max-width:none;border-radius:0;box-shadow:none;overflow:hidden;margin:0;`;
 
             const viewport = document.querySelector('.carousel-viewport');
-            viewport.style.cssText = `width:${VIEW_W}px;height:${VIEW_H}px;aspect-ratio:unset;overflow:hidden;cursor:default;`;
+            viewport.style.cssText = `width:${w}px;height:${h}px;aspect-ratio:unset;overflow:hidden;cursor:default;`;
 
             document.body.style.cssText = 'padding:0;margin:0;display:block;overflow:hidden;';
-        }""")
+            document.documentElement.style.cssText = 'padding:0;margin:0;';
+        }""",
+            [VIEW_W, VIEW_H],
+        )
 
         await page.wait_for_timeout(500)
 
         # Loop through each slide
         for i in range(TOTAL_SLIDES):
-            # Move the carousel-track to the i-th slide
-            await page.evaluate("""(idx) => {
+            # Move the carousel-track to the i-th slide.
+            # Same single-arg destructure pattern. The reflow nudge (offsetHeight)
+            # forces Chromium to commit the transform before the screenshot.
+            await page.evaluate(
+                """(args) => {
+                const [idx, w] = args;
                 const track = document.querySelector('.carousel-track');
-                track.style.transition = 'none';  // disable swipe animation
-                track.style.transform = 'translateX(' + (-idx * 420) + 'px)';
-            }""", i)
+                track.style.transition = 'none';   // disable swipe animation
+                track.style.transform = 'translateX(' + (-idx * w) + 'px)';
+                void track.offsetHeight;            // force reflow
+            }""",
+                [i, VIEW_W],
+            )
 
             await page.wait_for_timeout(400)  # let it settle
 
@@ -174,6 +193,23 @@ These are preview-only UI elements. They simulate the Instagram frame in chat, b
 ### Mistake 6: Not awaiting font.ready
 **Alternative for Mistake 3:** Use `await page.evaluate("() => document.fonts.ready")` instead of fixed timeout.
 This waits until ALL fonts have actually loaded, not a fixed 3 seconds.
+
+### Mistake 7: JS template literal `${VIEW_W}` referencing Python vars
+**Symptom:** All 7 exported PNGs are identical (only slide 1 visible) OR every slide has invisible/missing layout.
+**Why:** JS template literals like `` `width:${VIEW_W}px;` `` are JS syntax — they evaluate `VIEW_W` in the **JS** context, not Python. Python variables are NOT in scope inside `page.evaluate`. The literal renders as `width:undefinedpx` (which CSS rejects), and the carousel transform becomes `translateX(NaNpx)` (no-op).
+
+**Symptom diagnostic:** Run `shasum -a 256 slides/*.png` after export. Identical hashes across all 7 files = this bug.
+
+**Fix:** Pass Python vars as a single JS arg + destructure inside:
+```python
+await page.evaluate(
+    """(dims) => { const [w, h] = dims; ... `width:${w}px;height:${h}px;` ... }""",
+    [VIEW_W, VIEW_H],   # Playwright marshals this into the JS arg
+)
+```
+Same for the slide loop — `[i, VIEW_W]` then `const [idx, w] = args;` inside.
+
+This is fixed in the canonical script in Section 2 above. Do NOT regress to template-literal interpolation.
 
 ---
 
