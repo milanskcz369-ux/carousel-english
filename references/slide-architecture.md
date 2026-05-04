@@ -1,32 +1,134 @@
-# Slide Architecture — 7-Slide Structure & Reusable HTML Components
+# Slide Architecture — 7-Slide AND 10-Slide Structures + Reusable HTML Components
 
-Complete reference for the structural skeleton of every carousel.
+Complete reference for the structural skeleton of every carousel. Supports two arc lengths (7 and 10 slides), three aspect ratios (1:1, 4:5 std, 4:5 long), and three slide template archetypes (Hook / Value / CTA).
 
 **Sources synthesized:**
-- IconicTechs project instructions (10/10) — verbatim sequence
+- IconicTechs project instructions (10/10) — verbatim 7-slide sequence
 - Open Carrusel system prompt — narrative arc rules
 - LeadGenJay 5-phase framework — phase-to-slide mapping
 - Chris AI Studio — slide energy curve
+- @design.deb framework — 10-slide arc, safe zones, slide template archetypes, "confirm on slide 2"
 
 ---
 
-## 1. The Standard 7-Slide Sequence
+## 0. Aspect ratios + safe zones (NEW from design.deb)
 
-| # | Type | Background | Purpose | Word budget | Visual element |
+| Aspect | Pixel size | When to use | Preview viewport (CSS) |
+|---|---|---|---|
+| 1:1 | 1080×1080 | Feed-uniform, classic | 420×420 |
+| **4:5 (default)** | **1080×1350** | **More screen real estate, +23% engagement vs 1:1** | **420×525** |
+| 4:5 long | 1080×1440 | Most premium, max scroll-time, denser visual content | 420×560 |
+
+**Safe zones** (per design.deb framework — content stays inside these for Instagram UI overlap protection):
+
+| Edge | Safe distance |
+|---|---|
+| Top | **180px** (large — Instagram action bar covers top) |
+| Bottom | **180px** (large — caption + reactions overlay) |
+| Left | **50px** (small — minimal clipping) |
+| Right | **120px** (medium — swipe arrow + reaction icons) |
+
+The CSS rule: critical content (headline, CTA, key visuals) **never** within 180px of top/bottom or 120px of right edge.
+
+```css
+/* Safe-zone padding for the slide content area */
+.slide-content {
+  padding: 180px 120px 180px 50px; /* top right bottom left */
+}
+```
+
+For 4:5 (1080×1350), the **safe content area = 1080×990 within the canvas**. Plan layouts in this zone, NOT the full canvas.
+
+---
+
+## 1. The Standard 7-Slide Sequence (compressed/premium)
+
+Maps to the 4-stage viral framework: **HOOK → CONTEXT → VALUE → ACTION**.
+
+| # | Type | Background | 4-stage | Word budget | Visual element |
 |---|---|---|---|---|---|
-| 1 | Hero | LIGHT_BG | **Hook** — bold statement | 8 words max | Logo lockup, optional watermark |
-| 2 | Problem | DARK_BG | Pain point articulated | 14 words | Strikethrough pills (old tool) |
-| 3 | Solution | Brand gradient | The answer | 14 words | Quote/prompt box, optional |
-| 4 | Features | LIGHT_BG | What you get | 14 words/row × 3-5 rows | Icon-led feature list |
-| 5 | Details | DARK_BG | Depth, specs, differentiators | 14 words | Tag pills, sub-features |
-| 6 | How-to | LIGHT_BG | Numbered workflow | 14 words/step × 3-5 steps | Numbered steps with descriptions |
-| 7 | CTA | Brand gradient | Action — no swipe arrow | 14 words | CTA button, full progress bar |
+| 1 | Hero | LIGHT_BG | **HOOK** | 8 words max | Logo lockup, optional watermark |
+| 2 | Confirm | DARK_BG | **CONTEXT** *(receipt + push, NOT problem)* | 14 words | Audience-language quote pull or specific receipt number |
+| 3 | Solution | Brand gradient | **VALUE** | 14 words | Quote/prompt box, optional |
+| 4 | Features | LIGHT_BG | **VALUE** | 14 words/row × 3-5 | Icon-led feature list |
+| 5 | Details | DARK_BG | **VALUE** | 14 words | Tag pills, sub-features |
+| 6 | How-to | LIGHT_BG | **VALUE** | 14 words/step × 3-5 | Numbered steps |
+| 7 | CTA | Brand gradient | **ACTION** | 14 words | CTA button, full progress bar |
 
-**Rules:**
+## 2. The 10-Slide Sequence (design.deb max-engagement framework)
+
+| # | Type | 4-stage | Purpose |
+|---|---|---|---|
+| 1 | Hook | **HOOK** | Stop the scroll |
+| 2 | Confirm | **CONTEXT** | Receipt + push ("I've spent N years…") |
+| 3 | Build interest | **CONTEXT** | Why this matters / story example |
+| 4 | Retain (diagram) | **VALUE** | Diagram / framework intro |
+| 5 | Retain (diagram) | **VALUE** | Diagram continuation |
+| 6 | Practical | **VALUE** | Step / tip 1 |
+| 7 | Practical | **VALUE** | Step / tip 2 |
+| 8 | Practical | **VALUE** | Step / tip 3 |
+| 9 | Practical | **VALUE** | Recap or bonus |
+| 10 | CTA | **ACTION** | Single simple action |
+
+**Rules** (apply to both 7 and 10):
 - Hook MUST stop the scroll
+- **Slide 2 is CONFIRM, not problem** — research-backed: skipping confirm loses 30-40% swipe-through
 - CTA on brand gradient — no swipe arrow, progress bar at 100%
 - Alternate LIGHT and DARK backgrounds for visual rhythm
-- Adapt the sequence to the topic — but don't break the hook→problem→payoff arc
+- Critical content inside safe zones (Section 0)
+
+## 3. Narrative arcs by structure (4 archetypes)
+
+The structure picked at Step 0 (`references/viral-framework.md` Section B) overrides the generic arc. Each maps to the 10-slide framework:
+
+### Pure Info
+```
+1 Hook → 2 Context → 3-6 Value (key points) → 7 Recap → 8-9 Climax → 10 CTA
+```
+
+### Storytelling
+```
+1 Hook → 2 Setup → 3-4 Journey → 5-7 Turning point → 8-9 Lesson → 10 CTA
+```
+
+### Problem-Solution
+```
+1 Hook → 2 The Problem → 3-4 Why It Happens → 5-7 The Solution → 8-9 Outcome → 10 CTA
+```
+
+### Listicle
+```
+1 Hook → 2 Context → 3-8 The List (one item per slide) → 9 Bonus/Recap → 10 CTA
+```
+
+For 7-slide compression of any structure: collapse 3-4 + 5-7 into 3-5, keep 1-2 + 9-10 verbatim.
+
+## 4. The 3 slide template archetypes
+
+Every slide in any structure falls into one of 3 archetypes — apply the matching rule:
+
+### Hook Slide (slide 1, sometimes slide 2)
+- Display font: **64-96px**, weight 700+
+- Max 8 words
+- Single line OR 2-line break
+- Light background usually (scroll-stop)
+- Logo lockup top-left
+- Confirm hook on slide 2 (receipt + push)
+
+### Value Slide (slides 3 to N-1)
+- Heading 28-34px, weight 600
+- Max 14 words copy total
+- ONE visual element max (diagram OR list OR quote-pull — never 2)
+- Light/dark alternation
+- "Little text + lots of visuals" rule (design.deb)
+
+### CTA Slide (last slide always)
+- Personal photo or logo prominent
+- 1 SIMPLE action ("Save", "DM keyword", "Tag a friend") — NEVER 2+
+- Display font 40-54px, weight 700
+- NO swipe arrow
+- Progress bar at 100%
+- Brand gradient background
 
 ---
 

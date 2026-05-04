@@ -262,3 +262,55 @@ Then her 7 prompts cycle through:
 7. **Repurposing** — same content for LinkedIn / Threads / X
 
 Full verbatim post archived at: `~/Marketinges/instagram-carousel-research/twitter/02_posts_full/www_threads_com__iamgiuliaguerrieri_post_DVbCf1vDrwd_claude-prompts-i-use-to-create-viral-carousels.md`
+
+---
+
+## 10. The Confirm-on-Slide-2 Rule (NEW — design.deb framework)
+
+**Slide 2 is NOT the body. Slide 2 is the second hook — the "confirm".**
+
+If you skip the confirm and dive straight to "the problem is X," you lose 30-40% of the swipe-through. Slide 2 has ONE job: amplify the slide-1 hook with **a receipt** and **a push** to keep swiping.
+
+### The 3 required ingredients of a confirm slide
+
+1. **Specific number / receipt** — years, followers, revenue, time saved, slides shipped
+2. **First-person stake** — "I've", "We've", "My team", "I run"
+3. **Future-promise tease** — "Here's what" / "Here's everything I wish" / "Here's the system"
+
+### Verbatim examples (design.deb pattern)
+
+**Bad slide 2 (most carousels — diving into problem):**
+> *"Most creators chase 30 fresh ideas a week. Burnout in 90 days."*
+- Skips the receipt. Reader bails.
+
+**Good slide 2 (confirm + push):**
+> *"I've spent 7+ years creating carousels — 154K followers in the process. Here's everything I wish I knew before I started."*
+- Specific receipt (7 years, 154K), first-person ("I've"), future-promise ("Here's everything I wish").
+
+**Good slide 2 — operator variant:**
+> *"6.59M subs ran on the one doc I built. Here's the system that lets it ship without me."*
+
+**Good slide 2 — diagnostic variant:**
+> *"30+ founder businesses I've audited. Same wall every time. Here's the test."*
+
+### When the topic doesn't have a personal receipt
+
+If the user has no specific number to flex (new brand, no portfolio):
+- Use audience-language quote pull from research/Reddit (verbatim, attributed)
+- Or use industry stat as receipt: *"70% of founder brands stall at $300K. Same reason every time. Here's the test."*
+
+### Decision tree
+
+When generating slide 2, ask:
+
+1. Does the user have a **specific receipt number** they can flex? → use Pattern A (personal)
+2. If no, do we have a **research-backed industry stat**? → use Pattern B (stat as receipt)
+3. If no, do we have a **verbatim audience quote** from Reddit/comments? → use Pattern C (quote pull)
+
+Never write a slide 2 that lacks a receipt. The "confirm" rule is non-negotiable.
+
+### The slide-2 word budget
+
+- Body: **max 18-22 words** (slightly higher than the 14-word standard for value slides — confirm needs space for receipt)
+- Tag/kicker: same as other slides (`02 / CONFIRM` or `02 / CONTEXT`)
+- ONE visual element max (quote-pull, screenshot, OR specific number — not all three)

@@ -57,14 +57,58 @@ Nano Banana cost but gives custom imagery no one else has.
 
 | Phase | Reference file | When to load |
 |---|---|---|
+| **Format types** | `references/format-types.md` | Step 0 — pick 1 of 5 formats (Comparison / Tutorial / Native / Compilation / Story) |
+| **Viral framework** | `references/viral-framework.md` | Step 0 — 4-stage mental model (HOOK→CONTEXT→VALUE→ACTION) + 4 structures + "confirm on slide 2" + engagement benchmarks |
 | **Project setup** | `references/project-instructions.md` | First time setting up a brand, OR if user wants the verbatim Claude Project instructions |
-| **Architecture** | `references/slide-architecture.md` | Every carousel — 7-slide structure + reusable HTML components |
-| **Hooks** | `references/hook-formulas.md` | Every carousel — 3 archetypes (question/stat/bold) + word constraints |
+| **Architecture** | `references/slide-architecture.md` | Every carousel — 7-slide AND 10-slide structures + safe zones + reusable HTML components |
+| **Hooks** | `references/hook-formulas.md` | Every carousel — 3 archetypes (question/stat/bold) + word constraints + confirm-on-slide-2 |
 | **Copy QA** | `references/banned-words.md` | Every carousel — anti-AI-slop pass before HTML generation |
 | **Moodboard / Images** | `references/moodboard-workflow.md` | LEVEL 3 — Pinterest moodboard intake → JSON prompt → Nano Banana → embed in HTML |
-| **Export** | `references/export-pipeline.md` | Final phase — Playwright Python script + common mistakes |
+| **Export** | `references/export-pipeline.md` | Final phase — Playwright Python script (variable aspect support) + common mistakes |
 
 ## Step-by-step Workflow
+
+### Step 0 — Format + Structure + Aspect + Slide count (NEW)
+
+Before brand intake, **ASK THE USER 4 QUICK CHOICES** (combine into a single message — do not interrogate one-by-one):
+
+> "Before I start, 4 quick choices (or describe your topic in 1 sentence and I'll pick all four):
+>
+> **1. Format** (what kind of content)
+>    1. Comparison — two things side-by-side
+>    2. Tutorial — step-by-step how-to
+>    3. Native — personal photo + story
+>    4. Compilation — list / collection
+>    5. Story — knowledge share with arc
+>
+> **2. Structure** (the slide arc skeleton — see `references/viral-framework.md`)
+>    1. Pure Info — straight value, no fluff
+>    2. Storytelling — journey + lesson
+>    3. Problem-Solution — agitate + deliver answer
+>    4. Listicle — list-based, save-bait
+>
+> **3. Aspect ratio**
+>    - 1:1 (1080×1080) — feed-uniform
+>    - 4:5 (1080×1350) — DEFAULT, more screen real estate
+>    - 4:5 long (1080×1440) — most premium / most scroll-time
+>
+> **4. Slide count**
+>    - 7 slides — compressed, premium
+>    - 10 slides — design.deb framework, max engagement"
+
+If user describes topic only → auto-pick using rules in `references/format-types.md` (decision tree) and `references/viral-framework.md` Section E.
+
+**Default if user skips entirely:** Tutorial format · Pure Info structure · 4:5 (1080×1350) · 7 slides.
+
+**Apply 4-stage viral framework to ALL choices:**
+```
+HOOK (slide 1)
+  → CONTEXT (slide 2 — confirm hook with receipt)
+  → VALUE (slides 3 to N-1 — frameworks/steps/lists)
+  → ACTION (last slide — single primary CTA)
+```
+
+The "confirm on slide 2" rule is non-negotiable in every format/structure — see `references/viral-framework.md` Section D.
 
 ### Step 1 — Intake (skip if brand details already in CLAUDE.md or project context)
 
@@ -116,25 +160,46 @@ Font scale (fixed across brands):
 
 **Hook slide override:** 64-96px bold heading, max 8 words.
 
-### Step 4 — Narrative arc (7 slides default, range 5-10)
+### Step 4 — Narrative arc (7-slide OR 10-slide based on Step 0 choice)
 
-Apply IconicTechs/Open Carrusel slide sequence — see `references/slide-architecture.md`:
+Apply slide arc per the structure picked in Step 0 — full templates in `references/slide-architecture.md` (Section "Narrative arcs by structure").
 
-| # | Type | Background | Purpose |
+#### 7-slide arc (premium / compressed) — IconicTechs + Open Carrusel default
+
+| # | Type | Background | 4-stage |
 |---|---|---|---|
-| 1 | Hero | LIGHT_BG | **Hook** — bold statement, logo lockup |
-| 2 | Problem | DARK_BG | Pain point — what's broken/frustrating/outdated |
-| 3 | Solution | Brand gradient | The answer — optional quote/prompt box |
-| 4 | Features | LIGHT_BG | What you get — feature list with icons |
-| 5 | Details | DARK_BG | Depth — customization, specs, differentiators |
-| 6 | How-to | LIGHT_BG | Steps — numbered workflow |
-| 7 | CTA | Brand gradient | Logo, tagline, CTA button. NO arrow. Full progress bar. |
+| 1 | Hero | LIGHT_BG | **HOOK** — bold statement, logo lockup |
+| 2 | Confirm | DARK_BG | **CONTEXT** — receipt + push (NOT problem statement) |
+| 3 | Solution | Brand gradient | **VALUE** — the answer / framework intro |
+| 4 | Features | LIGHT_BG | **VALUE** — what you get |
+| 5 | Details | DARK_BG | **VALUE** — depth, specs, differentiators |
+| 6 | How-to | LIGHT_BG | **VALUE** — numbered workflow |
+| 7 | CTA | Brand gradient | **ACTION** — single CTA. NO arrow. Progress 100%. |
 
-Rules:
+#### 10-slide arc (design.deb framework / max engagement)
+
+| # | Type | 4-stage | Notes |
+|---|---|---|---|
+| 1 | Hook | **HOOK** | Stop the scroll |
+| 2 | Confirm | **CONTEXT** | Receipt + push ("I've spent N years…") |
+| 3 | Build interest | **CONTEXT** | Why this matters / the example |
+| 4 | Retain | **VALUE** | Diagram / framework intro |
+| 5 | Retain | **VALUE** | Diagram continuation |
+| 6-9 | Practical | **VALUE** | Steps / tips / details (1 idea per slide) |
+| 10 | CTA | **ACTION** | Single simple action |
+
+Pick based on Step 0 slide count choice. **Both arcs use the 4-stage HOOK→CONTEXT→VALUE→ACTION mental model**.
+
+Rules (apply to both arcs):
 - Hook MUST stop the scroll
+- **Slide 2 is CONFIRM, not problem** — receipt + push (research: "confirm on slide 2" rule, +30% swipe-through)
 - CTA on brand gradient — no swipe arrow, progress bar 100%
 - Alternate light/dark backgrounds for visual rhythm
-- Critical content in center 80% of slide (mobile-first thumb-stop)
+- Critical content within safe zones: 50px L, 120px R, 180px T, 180px B (Instagram UI overlap protection)
+- Slide template archetypes (per slide):
+  - **Hook slide:** display font 64-96px, max 8 words, scroll-stop
+  - **Value slide:** little text + lots of visuals, max 14 words copy, ONE visual element
+  - **CTA slide:** personal photo / logo + 1 simple action, NO swipe arrow
 
 ### Step 5 — Hook generation (always 3 alternatives, never 1)
 

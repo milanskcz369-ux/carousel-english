@@ -1,18 +1,48 @@
 # Export Pipeline — HTML to Instagram-ready PNGs
 
-After the carousel HTML file is approved, export each slide as an individual 1080×1350px PNG image ready for direct Instagram upload.
+After the carousel HTML file is approved, export each slide as an individual PNG image ready for direct Instagram upload. Now supports **3 aspect ratios** (1:1, 4:5, 4:5 long).
 
-**Source:** IconicTechs verbatim Playwright export script (Apr 2026, 10/10 production-grade).
+**Source:** IconicTechs verbatim Playwright export script + design.deb aspect-ratio framework.
+
+---
+
+## 0. Aspect ratio configuration table (NEW)
+
+The export script must adapt to the aspect ratio chosen at Step 0. Use this table to set `VIEW_W`, `VIEW_H`, and `SCALE`:
+
+| Aspect | Output PNG | Preview viewport | `device_scale_factor` |
+|---|---|---|---|
+| 1:1 | 1080×1080 | 420×420 | 2.5714 |
+| **4:5 (default)** | **1080×1350** | **420×525** | **2.5714** |
+| 4:5 long | 1080×1440 | 420×560 | 2.5714 |
+
+The `device_scale_factor` stays constant at `1080 / 420 = 2.5714…` because we always render the preview at 420px wide and scale up to 1080px output. Only `VIEW_H` changes.
+
+Pseudo-decision in the export script:
+
+```python
+ASPECT_CONFIG = {
+    "1:1":      (420, 420),    # square
+    "4:5":      (420, 525),    # default
+    "4:5_long": (420, 560),    # long
+}
+
+ASPECT = "4:5"  # change to "1:1" or "4:5_long" as needed
+VIEW_W, VIEW_H = ASPECT_CONFIG[ASPECT]
+SCALE = 1080 / VIEW_W  # always 2.5714
+```
 
 ---
 
 ## 1. The Critical Rule
 
-**Keep the layout at 420×525 in Playwright's viewport. Do NOT set viewport to 1080×1350.**
+**Keep the preview layout at 420px wide in Playwright's viewport. Do NOT set viewport to 1080×anything.**
 
-Why: setting viewport to 1080px makes the layout reflow — fonts become tiny, padding shifts, components break. Instead, render at 420px and use `device_scale_factor: 2.5714` to scale up to 1080px output without reflowing.
+Why: setting viewport to 1080px makes the layout reflow — fonts become tiny, padding shifts, components break. Instead, render at 420px wide and use `device_scale_factor: 2.5714` to scale up to 1080px output without reflowing.
 
 Math: `1080 / 420 = 2.5714…`
+
+The HEIGHT changes per aspect (420 / 525 / 560), but width stays 420px in the preview viewport.
 
 ---
 
@@ -26,12 +56,11 @@ from playwright.async_api import async_playwright
 # CONFIGURE THESE PER CAROUSEL
 INPUT_HTML = Path("/path/to/carousel.html")
 OUTPUT_DIR = Path("/path/to/output/slides")
-TOTAL_SLIDES = 7  # Update to match your carousel
-
-# DO NOT CHANGE THESE
-VIEW_W = 420
-VIEW_H = 525
-SCALE = 1080 / 420  # = 2.5714…
+TOTAL_SLIDES = 7  # Update: 7 (premium) or 10 (max-engagement, design.deb framework)
+ASPECT = "4:5"  # Update: "1:1" / "4:5" / "4:5_long"
+ASPECT_CONFIG = {"1:1": (420, 420), "4:5": (420, 525), "4:5_long": (420, 560)}
+VIEW_W, VIEW_H = ASPECT_CONFIG[ASPECT]
+SCALE = 1080 / VIEW_W  # always 2.5714 (1080 / 420)
 
 
 async def export_slides():
@@ -58,10 +87,10 @@ async def export_slides():
                 .forEach(el => el.style.display = 'none');
 
             const frame = document.querySelector('.ig-frame');
-            frame.style.cssText = 'width:420px;height:525px;max-width:none;border-radius:0;box-shadow:none;overflow:hidden;margin:0;';
+            frame.style.cssText = `width:${VIEW_W}px;height:${VIEW_H}px;max-width:none;border-radius:0;box-shadow:none;overflow:hidden;margin:0;`;
 
             const viewport = document.querySelector('.carousel-viewport');
-            viewport.style.cssText = 'width:420px;height:525px;aspect-ratio:unset;overflow:hidden;cursor:default;';
+            viewport.style.cssText = `width:${VIEW_W}px;height:${VIEW_H}px;aspect-ratio:unset;overflow:hidden;cursor:default;`;
 
             document.body.style.cssText = 'padding:0;margin:0;display:block;overflow:hidden;';
         }""")
