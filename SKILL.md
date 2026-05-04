@@ -374,12 +374,24 @@ If user is in `~/.claude/skills/` or another non-project directory, ask where to
 ## Companion Skills
 
 This skill plays well with:
-- `nano-banana` — for Level 3 image generation
+- **`json-prompt-generator`** (Grow With Alex bundle) — **NEW.** When Level 3 imagery is on, this skill is the preferred way to turn Pinterest references into structured JSON prompts for Nano Banana 2 / ChatGPT Image 2 / Midjourney / Higgsfield. Richer schema than the inline Chris AI Studio one (scene / style / technical / materials / environment / composition / quality). Install path: `~/.claude/skills/json-prompt-generator/`. Detailed call signature: `references/moodboard-workflow.md` Section C.0.
+- `nano-banana` — for Level 3 image generation (Gemini CLI / Gemini 3 Pro Image)
 - `taste-skill` — for additional anti-slop review (run BEFORE this skill, set DESIGN_VARIANCE=6, MOTION_INTENSITY=0)
 - `frontend-design` — for distinctive HTML if anti-slop check fails
 - `apify-content-analytics` — for performance feedback loop after publishing
 - `market-social` — for 30-day content calendar (carousel topics)
 - `web-artifacts-builder` — if user wants interactive React preview instead of static HTML
+
+**Skill chain for a Level 3 carousel:**
+```
+taste-skill (DV=6, MI=0)
+  → carousel-english (this skill)
+      → json-prompt-generator (Section C.0 of moodboard-workflow.md)
+          → nano-banana (CLI in Section D)
+              → carousel-english (resume — embed PNGs as base64)
+                  → export-pipeline.md (Playwright PNG export)
+                      → apify-content-analytics (after publishing)
+```
 
 For Hungarian output: run final HTML/copy through `stop-slop` + `humanizer` skills, OR use the `carousel-hungarian` skill (if installed).
 

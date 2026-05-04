@@ -93,14 +93,39 @@ When asked to "optimize the hook" or "improve slide 1":
 
 ---
 
-## 3. Word Constraints (Strict)
+## 3. Word Constraints (Strict — NEW Vault rules added)
 
-| Element | Max words | Source |
+| Element | Max words/lines | Source |
 |---|---|---|
-| Hook (slide 1) | **8 words** | Open Carrusel + IconicTechs verbatim |
-| Body slides (2-7) | 14 words | Mirra MCP "improves output quality" rule |
+| Hook (slide 1) | **6 words** preferred, 8 absolute max | **Vault Framework** (Grow With Alex) — stricter than IconicTechs |
+| Body slides (2-7) | 14 words OR **3 lines max** | Mirra MCP + Vault Framework — apply whichever hits first |
 | Tag/label | 2-3 words | IconicTechs reusable component |
 | CTA button | 4-5 words | IconicTechs final slide |
+
+### The 6-word headline rule (Vault)
+
+> *"Headlines: 6 words maximum. Plain language. No jargon. Your audience includes non-native English speakers."* — Grow With Alex, Vault Carousel Framework
+
+The 6-word constraint is even stricter than the 8-word IconicTechs rule. **Default to 6, allow 8 only if absolutely needed**, never go to 9+.
+
+### The 3-line body rule (Vault)
+
+> *"Body text: 3 lines maximum per slide."*
+
+Counts as **3 visual lines on the rendered slide**, NOT 3 sentences. If your sentence wraps to 4 lines on a 1080×1350 slide, it's too long — rewrite.
+
+### Plain language rule (Vault)
+
+Audience includes non-native English speakers. Jargon kills swipe-through.
+
+**Replace:**
+- "leverage" → "use"
+- "synergize" → "combine"
+- "ideate" → "come up with"
+- "deep dive into" → "explore"
+- "circle back" → "return to"
+
+See `references/banned-words.md` for the full list.
 
 **Mirra MCP verbatim:** *"each slide max 14 words" improves output quality.*
 

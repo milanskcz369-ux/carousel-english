@@ -2,7 +2,7 @@
 
 Production-grade Instagram carousel generator as a Claude Code skill. Outputs self-contained HTML at exact 1080×1350px (4:5), ready for Playwright screenshot export to PNG.
 
-Built on synthesis of ~3.5 MB of research (135 markdown files, 12 production blogs, 16 Reddit threads, 5 YouTube transcripts, 50+ X/LinkedIn threads, 15 GitHub repos). Combines IconicTechs project instructions, Open Carrusel narrative arc, LeadGenJay 5-phase framework, Chris AI Studio 3-level progression, **@design.deb 4-stage viral framework + 5 format types + 4 carousel structures**, and taste-skill anti-AI-slop rules.
+Built on synthesis of ~3.5 MB of research (135 markdown files, 12 production blogs, 16 Reddit threads, 5 YouTube transcripts, 50+ X/LinkedIn threads, 15 GitHub repos). Combines IconicTechs project instructions, Open Carrusel narrative arc, LeadGenJay 5-phase framework, Chris AI Studio 3-level progression, **@design.deb 4-stage viral framework + 5 format types + 4 carousel structures**, **Grow With Alex Vault Carousel Framework (tension-before-payoff arc + visual energy curve)**, and taste-skill anti-AI-slop rules.
 
 ---
 
@@ -80,14 +80,15 @@ Total: ~150 KB across 9 markdown files, ~3000 lines.
 ## Hard rules baked in
 
 - Max 14 words per slide (Mirra MCP rule, proven quality lift)
-- Hook max 8 words (`64-96px bold`, scroll-stop)
+- Hook max **6 words preferred, 8 absolute max** (Vault rule — `64-96px bold`, scroll-stop). Body slides max 3 lines (Vault).
 - 7 slides (premium) OR 10 slides (design.deb max-engagement framework)
 - 3 aspect ratios: 1:1 (1080×1080) / 4:5 (1080×1350) / 4:5 long (1080×1440)
 - **Safe zones** (design.deb): 50px L, 120px R, 180px T+B (Instagram UI overlap protection)
 - **Confirm-on-slide-2 rule** — slide 2 amplifies the hook with a receipt + push (NOT problem statement). Skipping this loses 30-40% swipe-through.
+- **Tension-before-Payoff rule (Vault)** — earn the insight, never give it away early. The energy curve is HIGH-LOW-MED-MED-HIGH-MED-LOW across slides 1-7.
 - 4-stage HOOK→CONTEXT→VALUE→ACTION mental model on every slide
 - Light/dark slide alternation for visual rhythm
-- Banned words: *delve, leverage, navigate, harness, elevate, tapestry, robust, seamless* + 20 more
+- Banned words: *delve, leverage, navigate, harness, elevate, tapestry, robust, seamless* + 20 more — plain language always wins (Vault)
 - Banned visual patterns: Inter font, purple/lila gradient, centered hero, drop shadows, generic 3-col cards
 - All images base64-embedded (no external URLs — Playwright export reliability)
 - Single primary CTA (NEVER save + DM + follow stacked — pick one)
@@ -95,10 +96,16 @@ Total: ~150 KB across 9 markdown files, ~3000 lines.
 
 ## Companion skills (recommended)
 
-- **`nano-banana`** — Level 3 image generation (Gemini CLI)
+- **`json-prompt-generator`** (Grow With Alex bundle) — **NEW.** Image-reference → structured JSON prompt for Nano Banana 2 / ChatGPT Image 2 / Midjourney / Higgsfield. Used by Level 3. Install: `~/.claude/skills/json-prompt-generator/`
+- **`nano-banana`** — Level 3 image generation (Gemini CLI / Gemini 3 Pro Image)
 - **`taste-skill`** — additional anti-slop review (set DESIGN_VARIANCE=6, MOTION_INTENSITY=0)
 - **`stop-slop` + `humanizer`** — for Hungarian or non-EN copy
 - **`apify-content-analytics`** — performance feedback loop after publishing
+
+**Skill chain for a Level 3 carousel:**
+```
+taste-skill → carousel-english → json-prompt-generator → nano-banana → carousel-english (resume) → export-pipeline → apify-content-analytics
+```
 
 ## Research backing
 
@@ -130,8 +137,9 @@ MIT — see [LICENSE](LICENSE).
 ## Credits
 
 - **@design.deb** ([Instagram](https://www.instagram.com/design.deb/)) — 154K followers, 7+ years carousel design — 4-stage viral framework, 5 format types, 4 carousel structures, safe zones, "confirm on slide 2" rule, 3 slide template archetypes
+- **Grow With Alex / Vault Carousel Framework** — Vault Carousel Framework PDF: 7-slide arc Hook→Context→Build→Build→Tension→Payoff→CTA + visual energy curve (HIGH-LOW-MED-MED-HIGH-MED-LOW), 6-word headlines, 3-line body rule, plain-language requirement, "tension before payoff — always" rule. Bundled with the **`json-prompt-generator`** companion skill (Claude Skill + ChatGPT GPT + Gemini Gem variants) for reference-image → structured JSON prompts.
 - **IconicTechs** ([blog](https://www.iconictechs.com/create-instagram-carousel-using-claude-ai/)) — verbatim ~5000-word Project Instructions
-- **Chris AI Studio** ([Medium](https://medium.com/@christianaistudio/no-canva-no-designer-just-claude-and-nano-banana-for-instagram-carousels-that-actually-pop-3dcf47d0ffc6)) — 3-level progression + Nano Banana JSON workflow
+- **Chris AI Studio** ([Medium](https://medium.com/@christianaistudio/no-canva-no-designer-just-claude-and-nano-banana-for-instagram-carousels-that-actually-pop-3dcf47d0ffc6)) — 3-level progression + Nano Banana JSON workflow (now superseded by `json-prompt-generator` companion skill)
 - **Hainrixz/open-carrusel** ([GitHub](https://github.com/Hainrixz/open-carrusel)) — reference architecture
 - **LeadGenJay** ([leadgenjay.com](https://leadgenjay.com/skills/carousel-post)) — 5-phase framework + banned words list
 - **VoltAgent/awesome-design-md** ([GitHub](https://github.com/VoltAgent/awesome-design-md)) — 67 brand DESIGN.md collection used for design directions

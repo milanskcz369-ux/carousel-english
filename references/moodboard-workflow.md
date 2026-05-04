@@ -6,6 +6,19 @@ The optional Level 3 upgrade — Pinterest moodboard intake → JSON image promp
 
 ---
 
+## ⚡ Companion skill (May 2026 update) — `json-prompt-generator`
+
+JSON prompt generation is now **delegated to the dedicated `json-prompt-generator` skill** (Grow With Alex bundle, installed at `~/.claude/skills/json-prompt-generator/`). It accepts reference images and produces structured JSON prompts for Nano Banana 2, ChatGPT Image 2, Midjourney, and Higgsfield using a richer schema (scene / style / technical / materials / environment / composition / quality).
+
+**When Section C below says "generate JSON prompts," call the companion skill** and feed it:
+- The Pinterest reference URLs (or attached images) collected in Section B
+- The 1-sentence mood description
+- The list of target slides + each slide's negative-space zone
+
+Section C still ships an **inline-schema fallback** (Chris AI Studio verbatim) for environments where the companion skill is unavailable. If `~/.claude/skills/json-prompt-generator/SKILL.md` exists, prefer the companion. Otherwise, use the inline schema in Section C.
+
+---
+
 ## A. When to trigger Level 3
 
 The skill MUST ask the user if they want Level 3 before HTML generation (see SKILL.md Step 6.5). The user opts in or stays at Level 1.
@@ -107,11 +120,44 @@ Confirm or specify per slide.
 
 ---
 
-## C. JSON image prompt generator — Chris AI Studio verbatim
+## C. JSON image prompt generator
 
-After collecting Pinterest references + mood + slide roles, run **this exact Claude prompt** to generate JSON prompts for each target image.
+After collecting Pinterest references + mood + slide roles, generate one JSON prompt per target slide.
 
-### Master prompt (Chris AI Studio verbatim, lightly adapted for Nano Banana 2)
+### C.0. PREFERRED — delegate to `json-prompt-generator` companion skill
+
+If `~/.claude/skills/json-prompt-generator/` is installed (it ships in this carousel-english bundle's recommended companion stack — see `SKILL.md` Companion Skills section), invoke it directly.
+
+**How to call it from inside this skill:**
+
+```
+For each target slide (e.g., slide 1, 5, 7):
+  1. Attach the Pinterest reference image(s) that match this slide's role
+  2. Give the companion skill this context as the user message:
+
+     "Carousel: <topic>. Slide N role: <hero atmosphere | analogy | decorative>.
+      Mood: <one-sentence mood from B-Q2>.
+      Negative space: <zone from B-Q4>.
+      Aspect: 4:5 (1080×1350).
+      Brand accent hex: <BRAND_PRIMARY>.
+      Avoid: text inside the image, AI-stock-photo people, generic faces, logos.
+      Generate ONE JSON prompt for Nano Banana 2 (Gemini 3 Pro Image)."
+
+  3. Companion returns a JSON block with: scene / style / technical / materials /
+     environment / composition / quality sections.
+  4. Forward the `scene.description` + key `style` + `quality.include` keywords
+     into the Nano Banana CLI command in Section D.
+```
+
+**Why prefer the companion:** richer schema (more granular than Chris AI Studio's flat schema), built-in negative prompts (`quality.avoid`), explicit camera/material/atmosphere fields that translate cleanly into Nano Banana's strengths.
+
+**Cross-slide consistency:** when generating the SET of slides (e.g., 1 + 5 + 7), invoke the companion ONCE per slide BUT hold all generations in the same Claude conversation so the style hints stay aligned. Re-paste the mood sentence + same Pinterest references for each call.
+
+### C.1. FALLBACK — Chris AI Studio inline master prompt
+
+Use this only if the companion skill is unavailable. Run **this exact Claude prompt** to generate JSON prompts for each target image.
+
+#### Master prompt (Chris AI Studio verbatim, lightly adapted for Nano Banana 2)
 
 ```
 You are an Instagram carousel art director. I provide:
@@ -159,7 +205,7 @@ Ship one JSON object per target slide. End your response with a
 single-line summary: "Generated N JSON prompts for slides [list]."
 ```
 
-### Example output (Bernath Roland Sentry navy carousel, slides 1 + 5 + 7)
+#### Example output (Bernath Roland Sentry navy carousel, slides 1 + 5 + 7)
 
 ```json
 [

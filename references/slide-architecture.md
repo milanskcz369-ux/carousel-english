@@ -103,6 +103,58 @@ The structure picked at Step 0 (`references/viral-framework.md` Section B) overr
 
 For 7-slide compression of any structure: collapse 3-4 + 5-7 into 3-5, keep 1-2 + 9-10 verbatim.
 
+## 3.5. Vault Carousel Framework (Grow With Alex) — Tension/Payoff arc
+
+A 5th structure variant, NEW source: Grow With Alex "The Carousel Framework" PDF. **The differentiator: TENSION before PAYOFF — always.** The carousel earns the insight, never gives it away early.
+
+| # | Role | Purpose | Visual energy | Treatment |
+|---|---|---|---|---|
+| 1 | **HOOK** | Stop the scroll. Provoke curiosity or tension. Must work standalone. | **HIGH** | Dramatic image, bold headline |
+| 2 | **CONTEXT** | Frame the problem. Why this matters right now. | **LOW** | Clean, text-only, breathing room |
+| 3 | **BUILD** | Core insight #1. One idea only. Build momentum. | **MEDIUM** | Warm, textural, alternate dark/light |
+| 4 | **BUILD** | Core insight #2. One idea only. Keep building. | **MEDIUM** | Alternate from slide 3 |
+| 5 | **TENSION** | The reframe. Challenge the assumption. Create the aha. | **HIGH** | Conceptual, abstract, unexpected |
+| 6 | **PAYOFF** | The key takeaway. Deliver the resolution they came for. | **MEDIUM** | Clean, resolved, open |
+| 7 | **CTA** | Earn the follow. Give them a reason to stay. | **LOW** | Solid brand bg, accent headline |
+
+### Visual energy curve (NEW concept)
+
+The Vault framework enforces a specific **energy curve across the 7 slides**:
+
+```
+Energy: HIGH → LOW → MED → MED → HIGH → MED → LOW
+        Hook  Ctx   B1    B2   Ten    Pay   CTA
+```
+
+This rhythm is what makes the carousel feel like a story, not a slideshow. Match the visual treatment to the energy stage:
+- **HIGH energy slides:** dramatic imagery, bold typography, high contrast
+- **LOW energy slides:** clean text-only, breathing room, restraint
+- **MEDIUM energy slides:** warm/textural treatment, alternating dark/light backgrounds for rhythm
+
+### The 4 hard rules from Vault framework (NON-NEGOTIABLE)
+
+1. **Tension before payoff. Always.** The carousel earns the insight. Never give it away early.
+2. **Slide 1 is judged alone.** Must provoke enough curiosity to justify a swipe — Instagram Explore shows just slide 1 sometimes.
+3. **Headlines: 6 words maximum.** (Stricter than the IconicTechs 8-word rule. Use 6 when possible, allow up to 8 only if absolutely needed.)
+4. **Body text: 3 lines maximum per slide.** Plain language, no jargon (audience includes non-native English speakers).
+
+### Visual storytelling rule (Vault)
+
+If you use generated images on slides, **match visual energy to narrative energy**:
+
+| Slide | Visual treatment |
+|---|---|
+| Hook | Most dramatic, high-contrast image. Stops scroll before anyone reads. |
+| Context | NO image or very subtle. Clean breathing room makes the hook hit harder by contrast. |
+| Build (3-4) | Warm, textural images. Close-ups, detail shots. Visual momentum pulling deeper. |
+| Tension | Most conceptual or striking image. Should feel **different** from everything before it. |
+| Payoff | Clean, resolved, open. Clarity after tension. |
+| CTA | NO image. Solid brand background. Visual shift signals "this is the ask." |
+
+This is the **inverse of the design.deb pattern** that uses imagery on most slides. Vault uses imagery **strategically** at HIGH-energy moments only (slides 1 and 5).
+
+---
+
 ## 4. The 3 slide template archetypes
 
 Every slide in any structure falls into one of 3 archetypes — apply the matching rule:
