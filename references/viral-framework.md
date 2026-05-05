@@ -1,8 +1,10 @@
 # Viral Carousel Framework (4-stage)
 
-Source: `@design.deb` "How to Become a Carousel Genius" framework + Krumzi 2026 + Chris AI Studio synthesis. Cited engagement on reference carousels: 83K likes / 506 comments / 121K saves / 2.3M views per banger; the @design.deb account grew to 154K followers in 7+ years using these structures.
+Source: `@design.deb` "How to Become a Carousel Genius" + "How to Make a Viral Carousel" frameworks + Krumzi 2026 + Chris AI Studio synthesis. Cited engagement on reference carousels: 83K likes / 506 comments / 121K saves / 2.3M views per banger; the @design.deb account grew to 154K followers in 7+ years using these structures.
 
 This is the **meta-mental model** that sits above the 5 format types and the 7/10-slide arc — every carousel maps to these 4 stages regardless of format.
+
+> **Canonical visual reference:** @design.deb's "HOW TO MAKE A VIRAL CAROUSEL" infographic carousel — saved at `references/assets/viral-carousel-framework-design-deb.png` (when added). The diagrams below are the verbatim text version of that visual.
 
 ---
 
@@ -34,14 +36,20 @@ Within the 4-stage framework, these are the **proven slide-arc skeletons**. Pick
 
 ### 1. PURE INFO — "Straight value. No fluff. Just results."
 
+**Flow:**
 ```
-Slide 1   HOOK     — bold claim
-Slide 2   CONTEXT  — why it matters
-Slide 3-6 VALUE    — key points / steps / tips (one per slide)
-Slide 7   RECAP    — quick summary
-Slide 8-9 CLIMAX   — the "aha" / non-obvious insight
-Slide 10  CTA      — single action
+[1 HOOK] → [2 CONTEXT] → [3-6 VALUE] → [7 RECAP] → [8-9 CLIMAX] → [10 CTA]
 ```
+
+**Slide-by-slide:**
+| Slide | Stage | Content |
+|---|---|---|
+| 1 | HOOK | Bold claim |
+| 2 | CONTEXT | Why it matters |
+| 3-6 | VALUE | Key points / steps / tips (one per slide) |
+| 7 | RECAP | Quick summary |
+| 8-9 | CLIMAX | The "aha" / non-obvious insight |
+| 10 | CTA | Single action |
 
 **When to use:** Pure tactical content. Reader wants to learn 1 thing fast.
 **Examples:** "Best Color Combos in 2026" / "5 typography rules" / "10 viral hook formulas"
@@ -49,14 +57,20 @@ Slide 10  CTA      — single action
 
 ### 2. STORYTELLING — "Take them on a journey. End with the lesson."
 
+**Flow:**
 ```
-Slide 1   HOOK          — "How I [did X]"
-Slide 2   SETUP         — context or problem
-Slide 3-4 JOURNEY       — struggle, process, challenges
-Slide 5-7 TURNING POINT — the shift, what changed
-Slide 8-9 LESSON        — what I learned
-Slide 10  CTA           — "Save this if it helped"
+[1 HOOK] → [2 SETUP] → [3-4 JOURNEY] → [5-7 TURNING POINT] → [8-9 LESSON] → [10 CTA]
 ```
+
+**Slide-by-slide:**
+| Slide | Stage | Content |
+|---|---|---|
+| 1 | HOOK | "How I [did X]" |
+| 2 | SETUP | Context or problem |
+| 3-4 | JOURNEY | Struggle, process, challenges |
+| 5-7 | TURNING POINT | The shift, what changed |
+| 8-9 | LESSON | What I learned |
+| 10 | CTA | "Save this if it helped" |
 
 **When to use:** Personal narrative. Author has receipts (numbers, time, scale) to back it up.
 **Examples:** "How I got 154K followers in 7 years" / "$1.2K → $42K, what I deleted"
@@ -64,14 +78,20 @@ Slide 10  CTA           — "Save this if it helped"
 
 ### 3. PROBLEM-SOLUTION — "Agitate, educate, and deliver the answer."
 
+**Flow:**
 ```
-Slide 1   HOOK         — pattern interrupt
-Slide 2   THE PROBLEM  — make it relatable (audience-language quote works well)
-Slide 3-4 WHY IT HAPPENS — root causes
-Slide 5-7 THE SOLUTION — framework, steps, or strategy
-Slide 8-9 OUTCOME      — the results you can expect
-Slide 10  CTA          — DM keyword for the system
+[1 HOOK] → [2 THE PROBLEM] → [3-4 WHY IT HAPPENS] → [5-7 THE SOLUTION] → [8-9 OUTCOME] → [10 CTA]
 ```
+
+**Slide-by-slide:**
+| Slide | Stage | Content |
+|---|---|---|
+| 1 | HOOK | Pattern interrupt |
+| 2 | THE PROBLEM | Make it relatable (audience-language quote works well) |
+| 3-4 | WHY IT HAPPENS | Root causes |
+| 5-7 | THE SOLUTION | Framework, steps, or strategy |
+| 8-9 | OUTCOME | The results you can expect |
+| 10 | CTA | DM keyword for the system |
 
 **When to use:** B2B / consulting / coaching content where you sell a system.
 **Examples:** "Why founder businesses stall at $300K" / "Why your carousels don't convert"
@@ -79,13 +99,19 @@ Slide 10  CTA          — DM keyword for the system
 
 ### 4. LISTICLE — "List-based content always performs."
 
+**Flow:**
 ```
-Slide 1   HOOK        — "10 X you need in 2026"
-Slide 2   CONTEXT     — why these matter
-Slide 3-8 THE LIST    — tips, tools, strategies, mistakes (one per slide)
-Slide 9   BONUS/RECAP — extra item or summary
-Slide 10  CTA         — "DM LIST for the full PDF"
+[1 HOOK] → [2 CONTEXT] → [3-8 THE LIST] → [9 BONUS/RECAP] → [10 CTA]
 ```
+
+**Slide-by-slide:**
+| Slide | Stage | Content |
+|---|---|---|
+| 1 | HOOK | "10 X you need in 2026" |
+| 2 | CONTEXT | Why these matter |
+| 3-8 | THE LIST | Tips, tools, strategies, mistakes (one per slide) |
+| 9 | BONUS/RECAP | Extra item or summary |
+| 10 | CTA | "DM LIST for the full PDF" |
 
 **When to use:** Save-bait / reference content. Audience wants a callable resource.
 **Examples:** "10 design tools" / "12 founder mistakes" / "8 carousel formats"
