@@ -60,11 +60,16 @@ Nano Banana cost but gives custom imagery no one else has.
 | **Format types** | `references/format-types.md` | Step 0 — pick 1 of 5 formats (Comparison / Tutorial / Native / Compilation / Story) |
 | **Viral framework** | `references/viral-framework.md` | Step 0 — 4-stage mental model (HOOK→CONTEXT→VALUE→ACTION) + 4 structures + "confirm on slide 2" + engagement benchmarks |
 | **Project setup** | `references/project-instructions.md` | First time setting up a brand, OR if user wants the verbatim Claude Project instructions |
-| **Architecture** | `references/slide-architecture.md` | Every carousel — 7-slide AND 10-slide structures + safe zones + reusable HTML components |
-| **Hooks** | `references/hook-formulas.md` | Every carousel — 3 archetypes (question/stat/bold) + word constraints + confirm-on-slide-2 |
+| **Architecture** | `references/slide-architecture.md` | Every carousel — 7-slide AND 10-slide structures + safe zones + reusable HTML components + Save Prompt slide |
+| **Hooks** | `references/hook-formulas.md` | Every carousel — 3 archetypes (question/stat/bold) + word constraints + confirm-on-slide-2 + Cover=80% rule |
+| **Visual teardown** | `references/visual-teardown.md` | **Step 6.5a — NEW.** When the user uploads a reference image: extract 8-dimension Design DNA BEFORE moodboard intake. Non-negotiable for L3 carousels. |
 | **Copy QA** | `references/banned-words.md` | Every carousel — anti-AI-slop pass before HTML generation |
-| **Moodboard / Images** | `references/moodboard-workflow.md` | LEVEL 3 — Pinterest moodboard intake → JSON prompt → Nano Banana → embed in HTML |
+| **Moodboard / Images** | `references/moodboard-workflow.md` | LEVEL 3 — Pinterest moodboard intake → JSON prompt → image gen (gpt-image-2 / Higgsfield / nano-banana) → embed in HTML |
+| **Multi-format pack** | `references/multi-format-pack.md` | **Step 9 alternative — NEW.** 1 carousel → 4 aspect ratios (3:4 / 9:16 / 16:9 / 21:9). Use when launching cross-platform or repurposing. |
 | **Export** | `references/export-pipeline.md` | Final phase — Playwright Python script (variable aspect support) + common mistakes |
+| **Sources** | `references/sources/` | Verbatim transcripts and source docs (Grow With Alex video, @design.deb, etc.) |
+| **Scripts** | `scripts/gen-image.sh` + `scripts/gen-image-multi-format.sh` | gpt-image-2 helpers (single + multi-aspect batch) |
+| **Templates** | `templates/claude-project-instructions.md` | Paste into a Claude.ai Project to run the skill workflow inside Claude.ai (Grow With Alex flow) |
 
 ## Step-by-step Workflow
 

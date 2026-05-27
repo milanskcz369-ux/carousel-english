@@ -102,6 +102,29 @@ When asked to "optimize the hook" or "improve slide 1":
 | Tag/label | 2-3 words | IconicTechs reusable component |
 | CTA button | 4-5 words | IconicTechs final slide |
 
+### 3.1. The "Cover does 80% of the work" rule (Grow With Alex — May 2026 update)
+
+Verbatim from Grow With Alex's "ChatGPT Image 2 + Claude" video (line 188-190 of transcript):
+
+> *"Two principles that matter more than structure, you know, one idea per slide, the cover does 80% of the work."*
+
+**Implication for hook design:**
+- Slide 1 (the cover) is **the single most important asset** in the carousel. Spend 50% of your hook-iteration budget on slide 1 alone.
+- If the cover doesn't earn the click (in feed-preview at thumbnail scale), nothing else in the carousel will be read.
+- Test the cover at **IG thumbnail scale (132×165px)** before approving — if the headline is unreadable at that scale, the typography is too small or the contrast is too weak.
+- The power-word treatment (a single word in accent color, MASSIVE display type) is the highest-leverage move — it works at thumbnail scale AND at full-screen scale.
+
+**Cover-quality checklist** (apply before any other slide work):
+- [ ] Hook ≤6 words (Vault rule)
+- [ ] One word in accent color (the "power word")
+- [ ] Display type ≥80px (preview scale) / 200+ in render
+- [ ] Single subject in image (no cluttered scenes — eye lands one place)
+- [ ] Contrast passes 4.5:1 at thumbnail scale
+- [ ] No banned words (see `banned-words.md`)
+- [ ] Tag top-left ("01 / [TAG]") + handle bottom-left
+
+If any fails → rewrite the cover before moving to slide 2.
+
 ### The 6-word headline rule (Vault)
 
 > *"Headlines: 6 words maximum. Plain language. No jargon. Your audience includes non-native English speakers."* — Grow With Alex, Vault Carousel Framework

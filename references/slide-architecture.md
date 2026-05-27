@@ -103,6 +103,36 @@ The structure picked at Step 0 (`references/viral-framework.md` Section B) overr
 
 For 7-slide compression of any structure: collapse 3-4 + 5-7 into 3-5, keep 1-2 + 9-10 verbatim.
 
+### 3.4. The "Save Prompt" slide (NEW — Grow With Alex update)
+
+Verbatim from Grow With Alex's "ChatGPT Image 2 + Claude" video (line 182):
+> *"Hook → Setup → Reframe → Value, value, value → after the climax, **save prompt**, CTA."*
+
+The **Save Prompt** is a dedicated slide that explicitly invites the save action — distinct from the final CTA. It's the second-to-last slide (slide 9 in a 10-arc, slide 6 in a 7-arc):
+
+| 10-slide position | Slide type | Content |
+|---|---|---|
+| 8 | Climax / The Insight | The "aha" — the unique perspective that earns the save |
+| **9** | **Save Prompt** | **Explicit save invitation** — e.g., *"Save this. You'll need it next time."* or *"Bookmark — comes up every 90 days."* — NOT a CTA, just the save trigger |
+| 10 | CTA | Single primary action — DM keyword / link in bio / follow |
+
+| 7-slide position | Slide type | Content |
+|---|---|---|
+| 5 | Climax / Tension | Vault tension peak — the "21 days offline" moment |
+| **6** | **Save Prompt (or Payoff with embedded save)** | **The system / answer + save trigger** baked together — e.g., *"The 4-part system. Save this carousel."* |
+| 7 | CTA | Single primary action |
+
+**Why separate from CTA:** the save action is a **passive, low-cognitive-load click** (especially on IG, where it's a single tap on the bookmark icon). The CTA is a **higher-effort action** (DM, comment, click-out). Stacking them on the same slide dilutes both. The Save Prompt slide warms up the save action; the CTA slide cashes in the goodwill for the bigger action.
+
+**Visual treatment for Save Prompt slide:**
+- Background: same as the Climax slide (visual continuity)
+- Headline: imperative ("Save this." / "Bookmark this." / "Save for later.") — ≤4 words
+- Sub-line: 1 line of "why" — *"You'll need it when [trigger]"*
+- NO swipe arrow (this is the last value slide before CTA — slow them down)
+- Bookmark icon visible (subtle, top-right or alongside text)
+
+**Save-rate target:** ≥40% of likes (Krumzi 2026 viral-grade benchmark) — the Save Prompt slide is what gets you there.
+
 ## 3.5. Vault Carousel Framework (Grow With Alex) — Tension/Payoff arc
 
 A 5th structure variant, NEW source: Grow With Alex "The Carousel Framework" PDF. **The differentiator: TENSION before PAYOFF — always.** The carousel earns the insight, never gives it away early.

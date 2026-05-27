@@ -58,7 +58,14 @@ ELSE:
 
 When Level 3 selected, run **exactly this 4-question intake**. Do not improvise — these questions are research-backed and produce reliably good JSON prompts.
 
-### Question 1 — Pinterest URLs
+### Question 1 — Pinterest URLs (brand reference) + optional Subject image
+
+**NEW: Dual image intake (Grow With Alex pattern — May 2026).** The strongest workflow takes TWO images:
+
+1. **Brand reference** — Pinterest pin / IG screenshot / brand site grab — defines the visual DNA (palette, typography, mood, treatment)
+2. **Subject image** *(optional but recommended for product/lifestyle content)* — the user's actual item: product, food shot, hat, ingredient, etc.
+
+When both are provided, Claude uses the brand reference for visual DNA and integrates the subject literally as the hero element in the relevant slides.
 
 ```
 Drop 3-5 Pinterest pin URLs (or attach reference images directly) that match
@@ -66,9 +73,14 @@ the visual mood you want. Pinterest is best because it's where premium
 designers actually moodboard. Other sources OK: Behance, Are.na, dribble,
 specific brand websites.
 
+PLUS (optional): drop ONE image of the actual subject — your product, food,
+ingredient, hat, etc. — that should appear as the hero on slides 1 + 5.
+
 If you have NO references: describe 3 brand sites whose feed you'd want
 your carousel to live next to (e.g., "Linear, Resend, Sentry").
 ```
+
+**Before going to Question 2, run the Visual Teardown** on the brand reference (see `visual-teardown.md` Section C). The teardown locks the Design DNA in writing, which then propagates into every JSON prompt's `quality.reference_standard` field.
 
 ### Question 2 — Mood description (1 sentence)
 
@@ -244,9 +256,68 @@ single-line summary: "Generated N JSON prompts for slides [list]."
 
 ---
 
-## D. Nano Banana CLI command patterns
+## D. Image generation — 3 paths
+
+The image generation step has THREE viable paths in 2026. Pick based on tooling preference and what's auth'd.
+
+### Path 1 — `gpt-image-2` via OpenAI REST (RECOMMENDED for L3 default)
+
+OpenAI's gpt-image-2 (ChatGPT Image 2) shipped with **layout-reasoning** (May 2026) — it now does typography / object placement / composition planning BEFORE rendering, which makes slide-to-slide consistency dramatically better than the previous generation. **This is what we used for the Bali Workflow / Garuda Empire test carousel.**
+
+Use the bundled helper script:
+
+```bash
+~/carousel-english/scripts/gen-image.sh \
+  ./images/slide_1_hero.png \
+  "<paste scene.description from json-prompt-generator>" \
+  1024x1280 \
+  high
+```
+
+For **multi-format pack** (1 prompt → 4 aspect ratios — see `references/multi-format-pack.md`):
+
+```bash
+~/carousel-english/scripts/gen-image-multi-format.sh \
+  --prompt-file path/to/slide_1.json \
+  --aspects "4:5,9:16,16:9,21:9" \
+  --quality high \
+  --out-dir ./pack/
+```
+
+**Pros:** Direct API, scriptable, multi-format batch, quality knobs (low/medium/high).
+**Cons:** Requires paid `OPENAI_API_KEY` with billing enabled.
+**Cost:** ~$0.011 (low) / $0.042 (medium) / $0.167 (high) per 1024×1280 image.
+
+### Path 2 — Higgsfield (manual UI, RECOMMENDED for visual iteration)
+
+**Higgsfield** (`higgsfield.ai`) is a unified UI for multi-model image generation — supports `gpt-image-2`, `Nano Banana 2`, and `Nano Banana Pro` from ONE panel. Per Grow With Alex (sponsor of his ChatGPT Image 2 video, May 2026), it's the go-to when you want fast model-switching + visual iteration without scripting.
+
+**Workflow:**
+1. Get the JSON prompts from `json-prompt-generator` companion in **"individually" mode** (one JSON per response, see `multi-format-pack.md` Section F).
+2. Open Higgsfield → pick the model (default: ChatGPT Image 2 / `gpt-image-2`).
+3. Paste either the full JSON or just the `scene.description` field as the prompt.
+4. Knobs:
+   - **Quality:** low / medium / high (start with **medium** for iteration, **high** for final)
+   - **Resolution:** 1K / 2K / 4K (recommend 1K for testing, 2K for production — 4K is overkill for IG)
+   - **Aspect:** 3:4 (carousel) / 9:16 (story) / 16:9 (thumbnail) / 21:9 (banner)
+   - **Batch size:** 4 (default — generates 4 variants, you pick the best)
+5. Generate → preview the 4 variants → save the best → next slide.
+
+**Pros:** No scripting, multi-model fallback in 1 click (if gpt-image-2 fails, switch to NB2/NB Pro), built-in upscaler + reference + edit tools, batch-of-4 lets you cherry-pick.
+**Cons:** Paid subscription (~$30-100/mo), manual workflow (no automation), credits-based.
+**Cost:** subscription-based; effective per-image cost similar to direct API but bundled.
+
+**When to choose Higgsfield over direct API:**
+- Iterating on the visual direction (need to see 4 variants quickly)
+- Working across multiple image models (gpt-image-2 + NB2 + NB Pro in same session)
+- Doing manual / interactive work, not batch automation
+- Cross-format pack (Higgsfield's UI handles aspect-switching cleanly)
+
+### Path 3 — Nano Banana 2 via Gemini CLI (LEGACY / fallback)
 
 The local `nano-banana` skill wraps Gemini 3 Pro Image (Nano Banana 2) via the Gemini CLI. Run one command per slide using the `prompt` field from the JSON.
+
+**Caveat:** As of May 2026 testing, the free-tier `gemini-3.1-pro` model has 0 quota for image generation — requires paid billing on the Google AI Studio project. If billing is set up, this is a viable fallback when OpenAI is rate-limited.
 
 ### Command structure
 
